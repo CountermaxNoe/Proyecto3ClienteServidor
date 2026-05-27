@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Sistema de turnos</title>
+    <link href="StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <section class="card">
+            <h1>Clientes</h1>
+            <p>Solicita tu turno y espera a ser llamado.</p>
+
+
+            <button onclick="solicitarTurno()">Solicitar turno</button>
+
+            <h2>Tu turno:</h2>
+            <div id="mensajeCliente">---</div>
+
+            <p id="mensajeCliente"></p>
+
+
+
+        </section>
+
+        <section class="card admin">
+            <h1>Admina</h1>
+
+            <button onclick="LlamarSiguiente()">Llamar Siguiente</button>
+
+            <h2>Turno actual:</h2>
+            <div id="turnoActual">---</div>
+
+
+            <h2>Fila de espera</h2>
+            <p id="fila"></p>
+            <p id="contadorFila"></p>
+
+
+        </section>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.7/signalr.min.js"></script>
+        <script src="app.js"></script>
+
+
+    </div>
+</body>
+</html>

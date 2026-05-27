@@ -1,0 +1,52 @@
+﻿body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #edf2fb, #d7e3fc);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    padding: 40px;
+}
+
+.card {
+    background: white;
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color: #1d3557;
+}
+
+button {
+    background: #0077b6;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.turno {
+    font-size: 45px;
+    font-weight: bold;
+    color: #0077b6;
+    margin: 20px 0;
+}
+
+.actual {
+    color: #e63946;
+}
+
+li {
+    list-style: none;
+    background: #edf2f4;
+    margin-bottom: 10px;
+    padding: 12px;
+    border-radius: 8px;
+}
