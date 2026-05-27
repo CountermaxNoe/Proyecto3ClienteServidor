@@ -1,47 +1,59 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <meta charset="utf-8" />
-    <title>Sistema de turnos</title>
-    <link href="StyleSheet.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <title>Sistema de Turnos</title>
+    <link rel="stylesheet" href="StyleSheet.css">
 </head>
 <body>
-    <div class="container">
-        <section class="card">
-            <h1>Clientes</h1>
-            <p>Solicita tu turno y espera a ser llamado.</p>
 
+    <header class="topbar">
+        <div>
+            <h1>Sistema de turnos</h1>
+            <p>Atención al cliente en tiempo real</p>
+        </div>
+    </header>
+
+    <main class="layout">
+
+        <section class="panel cliente">
+            <span class="tag">Cliente</span>
+            <h2>Solicitar turno</h2>
+            <p class="text">Presiona el botón para tomar un lugar en la fila de espera.</p>
 
             <button onclick="solicitarTurno()">Solicitar turno</button>
 
-            <h2>Tu turno:</h2>
-            <div id="mensajeCliente">---</div>
+            <div class="turno-box">
+                <p>Tu turno</p>
+                <strong id="miTurno">---</strong>
+            </div>
 
-            <p id="mensajeCliente"></p>
-
-
-
+            <p id="mensajeCliente" class="mensaje"></p>
         </section>
 
-        <section class="card admin">
-            <h1>Admina</h1>
+        <section class="panel admin">
+            <span class="tag">Administrador</span>
+            <h2>Panel de atención</h2>
+            <p class="text">Desde aquí se llama al siguiente cliente en la fila.</p>
 
-            <button onclick="LlamarSiguiente()">Llamar Siguiente</button>
+            <button class="btn-admin" onclick="LlamarSiguiente()">Llamar siguiente</button>
 
-            <h2>Turno actual:</h2>
-            <div id="turnoActual">---</div>
+            <div class="turno-box actual">
+                <p>Turno actual</p>
+                <strong id="turnoActual">---</strong>
+            </div>
+        </section>
 
-
+        <section class="panel fila">
             <h2>Fila de espera</h2>
-            <p id="fila"></p>
-            <p id="contadorFila"></p>
-
-
+            <p id="contadorFila" class="text">Personas en espera: 0</p>
+            <ul id="fila"></ul>
         </section>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.7/signalr.min.js"></script>
-        <script src="app.js"></script>
 
+    </main>
 
-    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.7/signalr.min.js"></script>
+    <script src="app.js"></script>
+
 </body>
 </html>
