@@ -5,16 +5,16 @@ namespace Proyecto3ClienteServidor.Hubs
 {
     public class TurnoHub : Hub
     {
-        private readonly TurnoService _turnoService;
+        private readonly TurnoService turnoservice;
 
         public TurnoHub(TurnoService turnoService)
         {
-            _turnoService = turnoService;
+            this.turnoservice = turnoService;
         }
 
         public async Task SolicitarTurno()
         {
-            var turno = _turnoService.SolicitarTurno(Context.ConnectionId);
+            var turno = turnoservice.SolicitarTurno(Context.ConnectionId);
 
             await Clients.Caller.SendAsync("TurnoAsignado", turno.Codigo, turno.Numero);
 
@@ -23,7 +23,7 @@ namespace Proyecto3ClienteServidor.Hubs
 
         public async Task LlamarSiguiente()
         {
-            var turno = _turnoService.LlamarSiguiente();
+            var turno = turnoservice.LlamarSiguiente();
 
             if (turno == null)
             {
@@ -40,7 +40,7 @@ namespace Proyecto3ClienteServidor.Hubs
 
         private async Task ActualizarFila()
         {
-            var fila = _turnoService.ObtenerFila();
+            var fila = turnoservice.ObtenerFila();
 
             await Clients.All.SendAsync("ActualizarFila", fila.Select(t => new
             {
