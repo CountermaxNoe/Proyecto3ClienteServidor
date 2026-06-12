@@ -12,13 +12,36 @@ namespace Proyecto3ClienteServidor.Hubs
             this.turnoservice = turnoService;
         }
 
-        public async Task SolicitarTurno()
+        public async Task SolicitarTurno(string clienteId)
         {
+            var turno = _turnoService.SolicitarTurno(Context.ConnectionId, clienteId);
             var turno = turnoservice.SolicitarTurno(Context.ConnectionId);
 
-            await Clients.Caller.SendAsync("TurnoAsignado", turno.Codigo, turno.Numero);
 
+            if (turno == null)
+            {
+                await Clients.Caller.SendAsync("RecepcionCerrada");
+                return;
+            }
+            await Clients.Caller.SendAsync("TurnoAsignado", turno.Codigo, turno.Numero);
             await ActualizarFila();
+        }
+        public async Task ReconectarCliente(string clienteId)
+        {
+            var turno = _turnoService.ObtenerTurnoPorClienteId(clienteId, Context.ConnectionId);
+
+            if (turno != null)
+            {
+                await Clients.Caller.SendAsync("TurnoRecuperado", turno.Codigo, turno.Numero);
+                await ActualizarFila();
+                return;
+            }
+            var turnoAtendido = _turnoService.ObtenerTurnoAtendidoPorClienteId(clienteId);
+
+            if (turnoAtendido != null)
+            {
+                await Clients.Caller.SendAsync("TurnoYaPaso", turnoAtendido.Codigo);
+            }
         }
 
         public async Task LlamarSiguiente()
@@ -47,6 +70,55 @@ namespace Proyecto3ClienteServidor.Hubs
                 codigo = t.Codigo,
                 numero = t.Numero
             }));
+        }
+        public async Task CancelarTurno()
+        {
+            var cancelado = _turnoService.CancelarTurno(Context.ConnectionId);
+
+            if (cancelado)
+            {
+                await Clients.Caller.SendAsync("TurnoCancelado");
+                await ActualizarFila();
+            }
+            else
+            {
+                await Clients.Caller.SendAsync("NoTieneTurno");
+            }
+        }
+        public async Task CerrarRecepcion()
+        {
+            _turnoService.CerrarRecepcion();
+            await Clients.All.SendAsync("EstadoRecepcion", false);
+        }
+        public async Task AbrirRecepcion()
+        {
+            _turnoService.AbrirRecepcion();
+            await Clients.All.SendAsync("EstadoRecepcion", true);
+        }
+        public async Task ResetearSistema()
+        {
+            _turnoService.ResetearSistema();
+
+            await Clients.All.SendAsync("SistemaReseteado");
+            await Clients.All.SendAsync("EstadoRecepcion", true);
+            await Clients.All.SendAsync("TurnoActual", "---");
+
+            await ActualizarFila();
+        }
+        public override async Task OnConnectedAsync()
+        {
+            var total = _turnoService.RegistrarClienteConectado(Context.ConnectionId);
+
+            await Clients.All.SendAsync("ClientesConectados", total);
+
+            await base.OnConnectedAsync();
+        }
+        public override async Task OnDisconnectedAsync(Exception? exception)
+        {
+            var total = _turnoService.RegistrarClienteDesconectado(Context.ConnectionId);
+            await Clients.All.SendAsync("ClientesConectados", total);
+            await base.OnDisconnectedAsync(exception);
+
         }
     }
 }

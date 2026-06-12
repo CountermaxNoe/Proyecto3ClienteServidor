@@ -2,6 +2,7 @@
 {
     public class TurnoModel
     {
+        public string ClienteId { get; set; } = ""; 
         public int Numero { get; set; }
 
         public string Codigo => $"A-{Numero:000}";

@@ -22,7 +22,7 @@
             <p class="text">Presiona el botón para tomar un lugar en la fila de espera.</p>
 
             <button onclick="solicitarTurno()">Solicitar turno</button>
-
+            <button class="btn-cancelar" onclick="cancelarTurno()">Cancelar turno</button>
             <div class="turno-box">
                 <p>Tu turno</p>
                 <strong id="miTurno">---</strong>
@@ -37,6 +37,12 @@
             <p class="text">Desde aquí se llama al siguiente cliente en la fila.</p>
 
             <button class="btn-admin" onclick="LlamarSiguiente()">Llamar siguiente</button>
+
+            <button class="btn-cerrar" onclick="cerrarRecepcion()">Cerrar recepcion</button>
+            <button class="btn-abrir" onclick="abrirRecepcion()">Abrir recepcion</button>
+            <button class="btn-reset" onclick="resetearSistema()">Resetear sistema</button>
+            <p id="estadoRecepcion" class="text">Recepcion abierta</p>
+            <p id="clientesConectados" class="text">Clientes conectados: 0</p>
 
             <div class="turno-box actual">
                 <p>Turno actual</p>

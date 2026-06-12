@@ -62,6 +62,28 @@ body {
     font-size: 13px;
     font-weight: 600;
 }
+.btn-cerrar {
+    background: #805f00;
+    margin-left: 10px;
+}
+
+    .btn-cerrar:hover {
+        background: #664c00;
+    }
+
+.btn-abrir {
+    background: #2f7d4f;
+    margin-left: 10px;
+}
+
+    .btn-abrir:hover {
+        background: #25643f;
+    }
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
 
 button {
     margin-top: 18px;
@@ -74,6 +96,7 @@ button {
     cursor: pointer;
 }
 
+
     button:hover {
         background: #255a82;
     }
@@ -85,6 +108,13 @@ button {
     .btn-admin:hover {
         background: #7f2d2c;
     }
+.btn-cancelar {
+    background: #6c757d;
+    margin-left: 10px;
+}
+.btn-cancelar:hover {
+    background: #555f66;
+}
 
 .turno-box {
     margin-top: 25px;
@@ -154,3 +184,11 @@ li {
         padding: 20px;
     }
 }
+.btn-reset {
+    background: #4b5563;
+    margin-left: 10px;
+}
+
+    .btn-reset:hover {
+        background: #374151;
+    }
