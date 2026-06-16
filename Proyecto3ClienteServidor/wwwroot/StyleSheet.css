@@ -5,151 +5,166 @@
 body {
     margin: 0;
     font-family: "Segoe UI", Arial, sans-serif;
-    background: #f5f6f8;
-    color: #222;
+    background: whitesmoke;
+    color: black;
 }
 
 .topbar {
-    background: #243447;
+    background: steelblue;
     color: white;
     padding: 24px 40px;
-    border-bottom: 4px solid #d6a84f;
+    border-bottom: 5px solid goldenrod;
 }
 
     .topbar h1 {
         margin: 0;
-        font-size: 28px;
+        font-size: 30px;
         font-weight: 600;
     }
 
     .topbar p {
         margin: 6px 0 0;
-        color: #d9e2ec;
+        color: white;
+        font-size: 15px;
     }
 
 .layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 22px;
-    padding: 30px 40px;
+    gap: 24px;
+    padding: 35px 45px;
 }
 
 .panel {
     background: white;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 26px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+    border: 1px solid lightgray;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 4px 12px gray;
 }
 
     .panel h2 {
-        margin-top: 12px;
+        margin-top: 14px;
         margin-bottom: 8px;
-        font-size: 22px;
+        font-size: 23px;
+        color: darkslategray;
     }
 
 .text {
-    color: #666;
+    color: dimgray;
     font-size: 15px;
 }
 
 .tag {
     display: inline-block;
-    background: #eef1f5;
-    color: #243447;
-    padding: 6px 12px;
+    background: aliceblue;
+    color: steelblue;
+    padding: 7px 14px;
     border-radius: 20px;
     font-size: 13px;
     font-weight: 600;
-}
-.btn-cerrar {
-    background: #805f00;
-    margin-left: 10px;
-}
-
-    .btn-cerrar:hover {
-        background: #664c00;
-    }
-
-.btn-abrir {
-    background: #2f7d4f;
-    margin-left: 10px;
-}
-
-    .btn-abrir:hover {
-        background: #25643f;
-    }
-
-button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+    border: 1px solid lightblue;
 }
 
 button {
     margin-top: 18px;
-    background: #2f6f9f;
+    background: steelblue;
     color: white;
     border: none;
     padding: 13px 22px;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 15px;
     cursor: pointer;
 }
 
-
     button:hover {
-        background: #255a82;
+        background: royalblue;
+    }
+
+    button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
     }
 
 .btn-admin {
-    background: #9f3a38;
+    background: firebrick;
 }
 
     .btn-admin:hover {
-        background: #7f2d2c;
+        background: darkred;
     }
+
 .btn-cancelar {
-    background: #6c757d;
+    background: gray;
     margin-left: 10px;
 }
-.btn-cancelar:hover {
-    background: #555f66;
+
+    .btn-cancelar:hover {
+        background: dimgray;
+    }
+
+.btn-cerrar {
+    background: darkgoldenrod;
+    margin-left: 10px;
 }
+
+    .btn-cerrar:hover {
+        background: goldenrod;
+    }
+
+.btn-abrir {
+    background: seagreen;
+    margin-left: 10px;
+}
+
+    .btn-abrir:hover {
+        background: green;
+    }
+
+.btn-reset {
+    background: slategray;
+    margin-left: 10px;
+}
+
+    .btn-reset:hover {
+        background: dimgray;
+    }
 
 .turno-box {
     margin-top: 25px;
-    padding: 20px;
-    background: #f3f6f9;
-    border-left: 5px solid #2f6f9f;
-    border-radius: 6px;
+    padding: 22px;
+    background: aliceblue;
+    border-left: 6px solid steelblue;
+    border-radius: 8px;
 }
 
     .turno-box p {
         margin: 0;
-        color: #666;
+        color: dimgray;
         font-size: 14px;
     }
 
     .turno-box strong {
         display: block;
         margin-top: 8px;
-        font-size: 42px;
-        color: #2f6f9f;
+        font-size: 44px;
+        color: steelblue;
         letter-spacing: 2px;
     }
 
 .actual {
-    border-left-color: #9f3a38;
+    background: mistyrose;
+    border-left-color: firebrick;
 }
 
     .actual strong {
-        color: #9f3a38;
+        color: firebrick;
     }
 
 .mensaje {
     margin-top: 18px;
     font-weight: 600;
-    color: #2f6f9f;
+    color: steelblue;
 }
 
 .fila {
@@ -163,11 +178,12 @@ ul {
 
 li {
     list-style: none;
-    padding: 14px 16px;
+    padding: 14px 18px;
     margin-bottom: 10px;
-    background: #fafafa;
-    border: 1px solid #ddd;
-    border-radius: 6px;
+    background: white;
+    border: 1px solid lightgray;
+    border-left: 5px solid steelblue;
+    border-radius: 8px;
 }
 
 @media (max-width: 800px) {
@@ -184,11 +200,3 @@ li {
         padding: 20px;
     }
 }
-.btn-reset {
-    background: #4b5563;
-    margin-left: 10px;
-}
-
-    .btn-reset:hover {
-        background: #374151;
-    }
